@@ -28,7 +28,9 @@ export default function RootLayout({
           <h1>next.js의 여러 기능들을 테스트를 하는 곳이며 나중에 다시 재사용 하기위한 저장소</h1>
           <div className={styles['bodyWrapper']}>
             <Sidebar />
-            <AntdRegistry>{children}</AntdRegistry>
+            <AntdRegistry>
+              <div className={styles['mainContainer']}>{children}</div>
+            </AntdRegistry>
           </div>
 
         </AuthSession>

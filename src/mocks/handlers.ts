@@ -10,7 +10,7 @@ function generateDate() {
     });
 }
 const User = [
-    { id: "elonmusk", nickname: "Elon Musk", image: "/yRsRRjGO.jpg" },
+    { id: "elonmusk", nickname: "Elon Musk", image: faker.image.avatar() },
     { id: "zerohch0", nickname: "제로초", image: "/5Udwvqim.jpg" },
     { id: "leoturtle", nickname: "레오", image: faker.image.avatar() },
 ];
@@ -53,9 +53,10 @@ export const handlers = [
             },
         });
     }),
-    http.get("/api/postRecommends", ({ request }) => {
+    http.get("/api/posts/recommends", ({ request }) => {
         const url = new URL(request.url);
         const cursor = parseInt(url.searchParams.get("cursor") as string) || 0;
+        console.log("/api/posts/recommends", cursor);
         return HttpResponse.json([
             {
                 postId: cursor + 1,

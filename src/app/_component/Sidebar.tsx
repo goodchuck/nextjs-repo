@@ -1,9 +1,10 @@
 "use client"
 import styles from './sidebar.module.css';
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { HomeOutlined, BankOutlined, AppstoreOutlined, MailOutlined, CalendarOutlined, LockOutlined, SettingOutlined, ConsoleSqlOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import { useRouter, usePathname } from 'next/navigation';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -24,32 +25,59 @@ function getItem(
 }
 
 const items: MenuProps['items'] = [
-    getItem('Navigation One', 'sub1', <MailOutlined />, [
-        getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-        getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+    getItem('Home', '/home', <HomeOutlined />),
+    getItem('NextjsDefault', 'default', <BankOutlined />, [
+        getItem('routing', 'nextjs', null, [getItem('Linking and Navigating', '/default/linking-and-navigating')], 'group'),
     ]),
-
-    getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-        getItem('Option 5', '5'),
-        getItem('Option 6', '6'),
-        getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
+    getItem('Auth', 'auth', <LockOutlined />, [
+        getItem('nextAuthjs', 'nextjs', null, [getItem('Login/LogOut', '/auth/nextjs/login')], 'group'),
+        // getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+    ]),
+    getItem('X', '/X', <LockOutlined />, [
+        getItem('무한스크롤', '/X/infinitescroll', null),
+    ]),
+    getItem('Date', 'sub2', <CalendarOutlined />, [
+        getItem('dayjs', '/date/dayjs'),
+        // getItem('Option 6', '6'),
+        // getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
     ]),
 
     { type: 'divider' },
 
-    getItem('Navigation Three', 'sub4', <SettingOutlined />, [
-        getItem('Option 9', '9'),
-        getItem('Option 10', '10'),
-        getItem('Option 11', '11'),
-        getItem('Option 12', '12'),
-    ]),
+    // getItem('Navigation Three', 'sub4', <SettingOutlined />, [
+    //     getItem('Option 9', '9'),
+    //     getItem('Option 10', '10'),
+    //     getItem('Option 11', '11'),
+    //     getItem('Option 12', '12'),
+    // ]),
 
-    getItem('Group', 'grp', null, [getItem('Option 13', '13'), getItem('Option 14', '14')], 'group'),
+    // getItem('Group', 'grp', null, [getItem('Option 13', '13'), getItem('Option 14', '14')], 'group'),
 ];
+
+/**
+ * 메인 레이아웃의 사이드바
+ * 사용 디자인 antDesign
+ * @returns 
+ */
 export default function Sidebar() {
+    const router = useRouter();
+
+    const pathname = usePathname();
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
+        console.log(pathname);
+        if (e.key === 'home') {
+            router.replace('/')
+        } else if (pathname === e.key) {
+
+        }
+        else {
+            router.replace(e.key)
+        }
+
     };
+
+
 
     return (
         <Menu

@@ -15,7 +15,7 @@ export default async function Login() {
 
 
     return (
-        <div className={styles['mainContainer']} >
+        <div>
             <div>
                 <h3>사용버전</h3>
                 <span>next-auth version : 5.0.0-beta.3</span>
@@ -32,7 +32,6 @@ export default async function Login() {
                 <div>해당 아래 부분은 위 로그인을 통해서 나오게되면 보입니다!</div>
                 <LogoutButton me={session}></LogoutButton>
             </div>
-
         </div>
     )
 }
