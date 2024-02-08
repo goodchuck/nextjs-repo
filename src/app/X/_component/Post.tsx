@@ -7,6 +7,7 @@ import { Post } from '@/model/Post';
 import { MouseEventHandler } from 'react';
 import PostArticle from './PostArticle';
 import PostImages from './PostImages';
+import ActionButtons from './ActionButtons';
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
@@ -15,6 +16,11 @@ type Props = {
     noImage?: boolean;
     post: Post;
 }
+/**
+ * X의 게시물 목록중 하나의 카드
+ * @param param0 
+ * @returns 
+ */
 export default function Post({ noImage, post }: Props) {
     let target = post;
     if (post.Original) {
@@ -63,7 +69,7 @@ export default function Post({ noImage, post }: Props) {
                     {!noImage && <div>
                         <PostImages post={target} />
                     </div>}
-                    {/* <ActionButtons post={target} /> */}
+                    <ActionButtons post={target} />
                 </div>
             </div>
         </PostArticle>

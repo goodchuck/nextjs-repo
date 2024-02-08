@@ -35,6 +35,7 @@ const items: MenuProps['items'] = [
     ]),
     getItem('X', '/X', <LockOutlined />, [
         getItem('무한스크롤', '/X/infinitescroll', null),
+        getItem('좋아요등 액션버튼들', '/X/actions', null),
     ]),
     getItem('Date', 'sub2', <CalendarOutlined />, [
         getItem('dayjs', '/date/dayjs'),

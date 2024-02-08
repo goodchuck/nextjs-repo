@@ -18,10 +18,10 @@ export default function PostRecommends() {
             console.log({ lastPage })
             return lastPage.at(-1)?.postId
         },
-        // staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-        staleTime: 0, // fresh -> stale, 5분이라는 기준
-        // gcTime: 300 * 1000
-        gcTime: 0
+        staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
+        // staleTime: 0, // fresh -> stale, 5분이라는 기준
+        gcTime: 300 * 1000
+        // gcTime: 0
     })
     const { ref, inView } = useInView({
         threshold: 0,

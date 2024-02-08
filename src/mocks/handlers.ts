@@ -1,5 +1,6 @@
 import { http, HttpResponse, StrictResponse } from "msw";
 import { faker } from "@faker-js/faker";
+import fs from "fs";
 
 function generateDate() {
     const lastWeek = new Date(Date.now());
@@ -10,11 +11,23 @@ function generateDate() {
     });
 }
 const User = [
+    { id: "YangTi", nickname: "YangTi", image: faker.image.avatar() },
     { id: "elonmusk", nickname: "Elon Musk", image: faker.image.avatar() },
     { id: "zerohch0", nickname: "제로초", image: "/5Udwvqim.jpg" },
     { id: "leoturtle", nickname: "레오", image: faker.image.avatar() },
 ];
 const Posts = [];
+
+/**
+ * X의 액션이벤트들을 연습하기위한 곳
+ */
+const testPost = {
+    _count: {
+        Hearts: 0,
+        Reposts: 0,
+        Comments: 0,
+    },
+};
 
 export const handlers = [
     http.post("/api/login", async ({ request }) => {
@@ -252,31 +265,31 @@ export const handlers = [
             );
         }
     ),
-    http.get(
-        "/api/posts/:postId",
-        ({ request, params }): StrictResponse<any> => {
-            const { postId } = params;
-            if (parseInt(postId as string) > 10) {
-                return HttpResponse.json(
-                    { message: "no_such_post" },
-                    {
-                        status: 404,
-                    }
-                );
-            }
-            return HttpResponse.json({
-                postId,
-                User: User[0],
-                content: `${1} 게시글 아이디 ${postId}의 내용`,
-                Images: [
-                    { imageId: 1, link: faker.image.urlLoremFlickr() },
-                    { imageId: 2, link: faker.image.urlLoremFlickr() },
-                    { imageId: 3, link: faker.image.urlLoremFlickr() },
-                ],
-                createdAt: generateDate(),
-            });
-        }
-    ),
+    // http.get(
+    //     "/api/posts/:postId",
+    //     ({ request, params }): StrictResponse<any> => {
+    //         const { postId } = params;
+    //         if (parseInt(postId as string) > 10) {
+    //             return HttpResponse.json(
+    //                 { message: "no_such_post" },
+    //                 {
+    //                     status: 404,
+    //                 }
+    //             );
+    //         }
+    //         return HttpResponse.json({
+    //             postId,
+    //             User: User[0],
+    //             content: `${1} 게시글 아이디 ${postId}의 내용`,
+    //             Images: [
+    //                 { imageId: 1, link: faker.image.urlLoremFlickr() },
+    //                 { imageId: 2, link: faker.image.urlLoremFlickr() },
+    //                 { imageId: 3, link: faker.image.urlLoremFlickr() },
+    //             ],
+    //             createdAt: generateDate(),
+    //         });
+    //     }
+    // ),
     http.get("/api/posts/:postId/comments", ({ request, params }) => {
         const { postId } = params;
         return HttpResponse.json([
@@ -332,5 +345,50 @@ export const handlers = [
             { tagId: 8, title: "세븐초", count: 1264 },
             { tagId: 9, title: "나인초", count: 1264 },
         ]);
+    }),
+    // 하트
+    http.post("/api/posts/heart", async ({ request }) => {
+        console.log("heart연습");
+        const body = await request.json();
+        return HttpResponse.json((testPost._count.Hearts += 1));
+    }),
+    http.post("/api/posts/unheart", async ({ request }) => {
+        console.log("unheart연습");
+        const body = await request.json();
+        return HttpResponse.json((testPost._count.Hearts -= 1));
+    }),
+    // 하트
+    http.post("/api/posts/reposts", async ({ request }) => {
+        console.log("reposts연습");
+        const body = await request.json();
+        return HttpResponse.json((testPost._count.Reposts += 1));
+    }),
+    http.post("/api/posts/unreposts", async ({ request }) => {
+        console.log("unreposts연습");
+        const body = await request.json();
+        return HttpResponse.json((testPost._count.Reposts -= 1));
+    }),
+    // 모든 액션들
+    http.get("/api/posts/actions", async ({ request }) => {
+        let cursor = 30;
+        return HttpResponse.json(
+            {
+                postId: cursor + 1,
+                User: User[0],
+                content: `액션들에 대한 연습용 섹션입니다!`,
+                Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+                createdAt: generateDate(),
+                _count: {
+                    Hearts: testPost._count.Hearts,
+                    Reposts: testPost._count.Reposts,
+                    Comments: testPost._count.Comments,
+                },
+            }
+            // {
+            //     headers: {
+            //         "Set-Cookie": "connect.sid=msw-cookie;HttpOnly;Path=/",
+            //     },
+            // }
+        );
     }),
 ];
