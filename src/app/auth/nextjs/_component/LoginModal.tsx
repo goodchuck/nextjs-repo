@@ -5,6 +5,7 @@ import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import LogoutButton from './LogoutButton';
+import { LoadingButton } from '@/app/_component/LoadingButton';
 
 export default function LoginModal() {
   const [id, setId] = useState('');
@@ -47,20 +48,6 @@ export default function LoginModal() {
   };
 
   return (
-    // <div className={style.modalBackground}>
-    //   <div className={style.modal}>
-    //     <div className={style.modalHeader}>
-    //       <button className={style.closeButton} onClick={onClickClose}>
-    //         <svg width={24} viewBox="0 0 24 24" aria-hidden="true"
-    //           className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
-    //           <g>
-    //             <path
-    //               d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
-    //           </g>
-    //         </svg>
-    //       </button>
-    //       <div>로그인하세요.</div>
-    //     </div>
     <>
       <form onSubmit={onSubmit}>
         <div className={style.modalBody}>
@@ -75,9 +62,10 @@ export default function LoginModal() {
         </div>
         <div className={style.message}>{message}</div>
         <div className={style.modalFooter}>
-          <button className={style.actionButton} disabled={!id && !password}>로그인하기</button>
+          {/* <button className={style.actionButton} disabled={!id && !password}>로그인하기</button> */}
+          <LoadingButton disabled={!id && !password} htmlType={'submit'}></LoadingButton>
         </div>
-      </form>
+      </form >
     </>
 
     //   </div>

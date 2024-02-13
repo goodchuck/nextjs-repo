@@ -26,8 +26,12 @@ function getItem(
 
 const items: MenuProps['items'] = [
     getItem('Home', '/home', <HomeOutlined />),
-    getItem('NextjsDefault', 'default', <BankOutlined />, [
-        getItem('routing', 'nextjs', null, [getItem('Linking and Navigating', '/default/linking-and-navigating')], 'group'),
+    getItem('NextjsDefault', '/default', <BankOutlined />, [
+        getItem('routing', 'nextjs', null, [getItem('Linking and Navigating', '/default/linking-and-navigating')]),
+        getItem('컴포넌트', '/default/components', null),
+        getItem('data-fetch', '/default/datafetch', null, [
+            getItem('Fetching, Caching, and Revalidating', '/default/datafetch'),
+            getItem('Server Actions and Mutations', '/default/datafetch/server-actions')])
     ]),
     getItem('Auth', 'auth', <LockOutlined />, [
         getItem('nextAuthjs', 'nextjs', null, [getItem('Login/LogOut', '/auth/nextjs/login')], 'group'),

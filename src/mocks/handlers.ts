@@ -391,4 +391,20 @@ export const handlers = [
             // }
         );
     }),
+    // 서버액션 테스트용
+    http.get("/api/serverActions", async ({ request }) => {
+        return HttpResponse.json(User[1]);
+    }),
+    // User[1]을 바꿔서 줄 예정
+    http.post("/api/serverActions", async ({ request }) => {
+        const body = await request.json();
+        // console.log({ body });
+
+        if (body) {
+            User[1].id = body.id;
+            User[1].nickname = body.nickname;
+        }
+
+        return HttpResponse.json(User[1]);
+    }),
 ];
