@@ -29,7 +29,7 @@ const items: MenuProps['items'] = [
     getItem('NextjsDefault', '/default', <BankOutlined />, [
         getItem('routing', 'nextjs', null, [getItem('Linking and Navigating', '/default/linking-and-navigating')]),
         getItem('컴포넌트', '/default/components', null),
-        getItem('data-fetch', '/default/datafetch', null, [
+        getItem('data-fetch', '/default/d', null, [
             getItem('Fetching, Caching, and Revalidating', '/default/datafetch'),
             getItem('Server Actions and Mutations', '/default/datafetch/server-actions')])
     ]),
@@ -41,8 +41,13 @@ const items: MenuProps['items'] = [
         getItem('무한스크롤', '/X/infinitescroll', null),
         getItem('좋아요등 액션버튼들', '/X/actions', null),
     ]),
-    getItem('Date', 'sub2', <CalendarOutlined />, [
-        getItem('dayjs', '/date/dayjs'),
+    getItem('ThirdParty', '/thridparty', <CalendarOutlined />, [
+        getItem('Carousel', '/thirdparty/carousel', null, [
+            getItem('Embla-Carousel', '/thirdparty/carousel/embla-carousel')
+        ]),
+        getItem('dayjs', '/thirdparty/date', null, [
+            getItem('dayjs', '/thirdparty/date/dayjs')
+        ]),
         // getItem('Option 6', '6'),
         // getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
     ]),
