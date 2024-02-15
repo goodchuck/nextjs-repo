@@ -5,12 +5,18 @@ import { Button, Flex } from 'antd';
 
 export const LoadingButton = (props: any) => {
     const [loading, setLoading] = useState<boolean>();
-
+    let times
+    if (props.times) {
+        times = props.times;
+    }
+    else {
+        times = 2000;
+    }
     const enterLoading = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-        }, 6000);
+        }, times);
     }
 
     return (
