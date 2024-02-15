@@ -48,6 +48,12 @@ const items: MenuProps['items'] = [
         getItem('dayjs', '/thirdparty/date', null, [
             getItem('dayjs', '/thirdparty/date/dayjs')
         ]),
+        getItem('유효성검증', '/thirdparty/validation', null, [
+            getItem('zod', '/thirdparty/validation/zod', null, [
+                getItem('zod-with-server-action', '/thirdparty/validation/zod/with-server-action'),
+                getItem('zod-no-server-action', '/thirdparty/validation/zod/no-server-action')
+            ])
+        ]),
         // getItem('Option 6', '6'),
         // getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
     ]),
