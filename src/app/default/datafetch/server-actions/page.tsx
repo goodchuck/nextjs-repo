@@ -62,7 +62,7 @@ async function createInvoice(formData: FormData) {
     // return <form action={createInvoice}></form>
 }
 export default async function Page() {
-
+    return;
     const data = await getUser();
     return (
         <Flex gap="middle" vertical={true} style={{ height: '100dvh' }}>
