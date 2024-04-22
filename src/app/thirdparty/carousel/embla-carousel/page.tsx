@@ -6,7 +6,7 @@ import { Flex } from "antd";
 export default function Page() {
     return (
         <Flex gap='middle' vertical>
-            embla-carousel이에요
+            <div>embla-carousel이에요</div>
             <h2>설치</h2>
             <p>npm install embla-carousel-react --save</p>
             <p>or</p>
