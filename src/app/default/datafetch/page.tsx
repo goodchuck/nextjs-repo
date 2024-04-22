@@ -11,7 +11,7 @@ async function getData() {
 
 
 export default async function DataFetchPage() {
-    const data = await getData();
+    // const data = await getData();
     // console.log({ data })
     return (
         <div>
