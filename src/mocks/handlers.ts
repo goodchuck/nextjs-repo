@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { http, HttpResponse, StrictResponse } from "msw";
 import { faker } from "@faker-js/faker";
 import fs from "fs";

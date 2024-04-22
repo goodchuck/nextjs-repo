@@ -54,6 +54,9 @@ const items: MenuProps['items'] = [
                 getItem('zod-no-server-action', '/thirdparty/validation/zod/no-server-action')
             ])
         ]),
+        getItem('chatGPT', '/thirdparty/chatGPT', null, [
+            getItem('Default', '/thirdparty/chatgpt')
+        ]),
         // getItem('Option 6', '6'),
         // getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
     ]),

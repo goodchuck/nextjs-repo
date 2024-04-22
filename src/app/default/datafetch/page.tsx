@@ -20,10 +20,10 @@ export default async function DataFetchPage() {
                 async await으로 이루어진 서버컴포넌트안에 fetch를 사용할 수 있어요
             </p>
             <h3>next.js에서 fetch 캐싱 방법</h3>
-            <p>fetch('https://...', {'{cache: "force-cache"}'})</p>
+            <p>fetch(&quot;https://...&quot;, {'{cache: "force-cache"}'})</p>
 
             <h3>next.js에서 revalidating Data하는 방법</h3>
-            <p>fetch('https://...', {'next: { revalidate: 3600}'})</p>
+            <p>fetch(&quot;https://...&quot;, {'next: { revalidate: 3600}'})</p>
 
         </div>
     )

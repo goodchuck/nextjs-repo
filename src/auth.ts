@@ -17,6 +17,7 @@ export const {
             console.log("auth.ts jwt", token);
             return token;
         },
+        //@ts-ignore
         session({ session, newSession, user }) {
             console.log("auth.ts session", session, newSession, user);
             return session;
