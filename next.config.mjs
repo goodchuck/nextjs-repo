@@ -1,7 +1,7 @@
 const isProd = process.env.NODE_ENV === 'production';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
+    // output: 'export',
     // assetPrefix: isProd ? '/nextjs-repo' : '',
     // basePath: isProd ? '/nextjs-repo' : '',
     images: {
