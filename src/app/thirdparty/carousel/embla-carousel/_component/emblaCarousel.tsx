@@ -49,11 +49,12 @@ export const EmblaCarousel = () => {
     useEffect(() => {
         if (!emblaApi) return
 
-        onInit(emblaApi)
-        onSelect(emblaApi)
-        emblaApi.on('reInit', onInit)
-        emblaApi.on('reInit', onSelect)
-        emblaApi.on('select', onSelect)
+        return;
+        // onInit(emblaApi)
+        // onSelect(emblaApi)
+        // emblaApi.on('reInit', onInit)
+        // emblaApi.on('reInit', onSelect)
+        // emblaApi.on('select', onSelect)
     }, [emblaApi, onInit, onSelect])
 
     useEffect(() => {

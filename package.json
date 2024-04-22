@@ -24,7 +24,7 @@
         "dayjs": "^1.11.10",
         "embla-carousel": "^8.0.0-rc22",
         "embla-carousel-autoplay": "^8.0.0-rc22",
-        "embla-carousel-react": "^8.0.0-rc22",
+        "embla-carousel-react": "^8.0.2",
         "next": "14.0.4",
         "next-auth": "^5.0.0-beta.3",
         "openai": "^4.28.0",
